@@ -1,5 +1,5 @@
-# Instadating
-React Native
+# OnlyVacs
+Dating App for those with COVID-19 vaccine
 
 ## Enable Push Notification
 
