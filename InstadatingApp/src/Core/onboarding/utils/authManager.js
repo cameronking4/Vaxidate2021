@@ -6,7 +6,7 @@ import Geolocation from "@react-native-community/geolocation";
 const FBSDK = require('react-native-fbsdk');
 const { LoginManager, AccessToken } = FBSDK;
 
-const defaultProfilePhotoURL = "https://images.unsplash.com/photo-1514125669375-59ee3985d08b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80";
+const defaultProfilePhotoURL = "https://www.iosapptemplates.com/wp-content/uploads/2019/06/empty-avatar.jpg";
 
 const retrievePersistedAuthUser = () => {
     return new Promise(resolve => {
