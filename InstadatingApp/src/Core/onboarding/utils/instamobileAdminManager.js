@@ -4,7 +4,7 @@ import { firebasePost, firebaseStory } from '../../socialgraph/feed/firebase';
 const admin = {
     id: "9Ku8ivEHp8ch1qSbSKXcH2onzDF3",
     profilePictureURL: "https://firebasestorage.googleapis.com/v0/b/production-a9404.appspot.com/o/A048599D-C100-47D2-B2B9-510ED845B477.jpg?alt=media&token=d7a66e21-6f85-4d81-b9de-bc1335e49f27",
-    firstName: "Vaccidate",
+    firstName: "Vaxidate",
     lastName: "Admin"
 }
 
@@ -106,7 +106,7 @@ const handleNewAccountCreation = async (user) => {
     channelsRef.doc(channelID).collection('thread').add({ ...data });
 
     // Add a welcome message for all demo users
-    const message2 = "Hey, I’m Florian, the maker of Instamobile. Thanks for installing our demo! Don't hesitate to message me here if you have any questions. ✌️🚀";
+    const message2 = "Welcome to Vaxidate! If you've made it thus far, you've been verified to use the platform. Now you can be confident that anyone you match with won't continue the spread of Covid-19! Don't hesitate to message me here if you have any questions. ✌️🚀";
     const data2 = {
         content: message2,
         created: timestamp,

@@ -135,7 +135,7 @@ const CardDetailsView = props => {
                 }}
               />
             }
-          > 
+          >
             {myPhotos.map((photo, i) => (
               <FastImage
                 key={"photos" + i}
@@ -158,11 +158,14 @@ const CardDetailsView = props => {
           <Text style={styles.nameText}>{firstName} {lastName}</Text>
           <Text style={styles.ageText}>{age}</Text>
         </View>
+
         <View style={styles.captionView}>
-          <View style={styles.itemView}>
-            <Image style={styles.icon} source={AppStyles.iconSet.schoolIcon} />
-            <Text style={styles.text}>{school}</Text>
-          </View>
+          {props.school != null && (
+            <View style={styles.itemView}>
+              <Image style={styles.icon} source={AppStyles.iconSet.schoolIcon} />
+              <Text style={styles.text}>{school}</Text>
+            </View>
+          )}
           {props.distance != undefined && (
             <View style={styles.itemView}>
               <Image
@@ -171,17 +174,18 @@ const CardDetailsView = props => {
               />
 
               <Text style={[styles.text, { marginLeft: 2 }]}>
-                {`${Math.round(distance)}${
-                  distance > 1.9 ? " " + IMLocalized('miles') : " " + IMLocalized('mile')
+                {`${Math.round(distance)}${distance > 1.9 ? " " + IMLocalized('miles') : " " + IMLocalized('mile')
                   } ${IMLocalized('away')}`}
               </Text>
             </View>
           )}
         </View>
         <View style={styles.lineView} />
-        <View style={styles.bioView}>
-          <Text style={styles.bioText}>{bio}</Text>
-        </View>
+        {props.bio != null && (
+          <View style={styles.bioView}>
+            <Text style={styles.bioText}>{bio}</Text>
+          </View>
+        )}
         {instagramPhotos.length > 0 && (
           <View style={styles.instagramView}>
             <View style={styles.itemView}>
@@ -191,7 +195,7 @@ const CardDetailsView = props => {
             </View>
             <Swiper
               showsButtons={false}
-              loop={false}
+              loop={true}
               paginationStyle={{ top: -240, left: null, right: 0 }}
               dot={
                 <View
@@ -217,7 +221,7 @@ const CardDetailsView = props => {
                     marginLeft: 3,
                     marginRight: 3,
                     marginTop: 3,
-                    marginBottom: 3
+                    marginBottom: 2
                   }}
                 />
               }

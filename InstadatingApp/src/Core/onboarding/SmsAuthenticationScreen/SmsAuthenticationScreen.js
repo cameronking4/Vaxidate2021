@@ -93,7 +93,7 @@ const SmsAuthenticationScreen = props => {
         } else {
           const user = response.user;
           props.setUserData({ user });
-          props.navigation.navigate('MainStack', { user: user });
+          props.navigation.navigate('Verification', { user: userDetails });
         }
         setLoading(false);
       })
@@ -269,14 +269,14 @@ const SmsAuthenticationScreen = props => {
       <>
         <Text style={styles.title}>{IMLocalized('Sign In')}</Text>
         {isPhoneVisible ? phoneInputRender() : codeInputRender()}
-        <Text style={styles.orTextStyle}> {IMLocalized('OR')}</Text>
-        <Button
+        {/* <Text style={styles.orTextStyle}> {IMLocalized('OR')}</Text> */}
+        {/* <Button
           containerStyle={styles.facebookContainer}
           style={styles.facebookText}
           onPress={() => onFBButtonPress()}
         >
           {IMLocalized('Login With Facebook')}
-        </Button>
+        </Button> */}
         <Button
           containerStyle={styles.signWithEmailContainer}
           onPress={() => props.navigation.navigate('Login', { appStyles, appConfig })}

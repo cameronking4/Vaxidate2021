@@ -12,6 +12,7 @@ import MyProfileScreen from "../screens/MyProfileScreen/MyProfileScreen";
 import AddProfilePictureScreen from "../screens/AddProfilePictureScreen";
 import LoginScreen from "../Core/onboarding/LoginScreen/LoginScreen";
 import SignupScreen from "../Core/onboarding/SignupScreen/SignupScreen";
+import VerificationScreen from "../Core/onboarding/Verification/VerificationScreen";
 import WelcomeScreen from "../Core/onboarding/WelcomeScreen/WelcomeScreen";
 import WalkthroughScreen from "../Core/onboarding/WalkthroughScreen/WalkthroughScreen";
 import SmsAuthenticationScreen from '../Core/onboarding/SmsAuthenticationScreen/SmsAuthenticationScreen';
@@ -25,6 +26,7 @@ const LoginStack = createStackNavigator(
     Welcome: { screen: WelcomeScreen },
     Login: { screen: LoginScreen },
     Signup: { screen: SignupScreen },
+    Verification: { screen: VerificationScreen },
     Sms: { screen: SmsAuthenticationScreen }
   },
   {

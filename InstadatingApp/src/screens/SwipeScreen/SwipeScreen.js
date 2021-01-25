@@ -165,8 +165,8 @@ const SwipeScreen = props => {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
         {
-          title: IMLocalized("Instadating App"),
-          message: IMLocalized("Instadating App wants to access your location ")
+          title: IMLocalized("Vaxidate"),
+          message: IMLocalized("Vaxidate App wants to access your location ")
         }
       );
 
@@ -217,14 +217,14 @@ const SwipeScreen = props => {
 
   const handleIncompleteUserData = () => {
     Alert.alert(
-      IMLocalized("Let's complete your dating profile"),
-      IMLocalized("Welcome to Instadating. Let's complete your dating profile to let other people find you."),
+      IMLocalized("Seems like you're missing info!"),
+      IMLocalized("Complete your dating profile to let others find you. Be sure to include your age, a bio and some photos!"),
       [
         {
           text: IMLocalized("Let's go"),
           onPress: () => {
             user.profilePictureURL
-              ? props.navigation.replace("AccountDetails", {
+              ? props.navigation.navigate("MyProfileStack", {
                 lastScreen: "Swipe",
                 appStyles: DynamicAppStyles,
                 form: DatingConfig.editProfileFields,

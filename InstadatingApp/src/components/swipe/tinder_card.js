@@ -28,10 +28,12 @@ const TinderCard = props => {
           <Text style={styles.name_style}>
             {name ? name : " "}, {age ? age : " "}
           </Text>
-          <View style={styles.txtBox}>
-            <Image style={styles.icon} source={AppStyles.iconSet.schoolIcon} />
-            <Text style={styles.label}>{school ? school : " "}</Text>
-          </View>
+          {props.school != null && (
+            <View style={styles.txtBox}>
+              <Image style={styles.icon} source={AppStyles.iconSet.schoolIcon} />
+              <Text style={styles.label}>{school ? school : " "}</Text>
+            </View>
+          )}
           {distance != undefined && (
             <View style={styles.txtBox}>
               <Image
@@ -39,8 +41,7 @@ const TinderCard = props => {
                 source={AppStyles.iconSet.markerIcon}
               />
               <Text style={styles.label}>
-                {`${Math.round(distance)}${
-                  distance > 1.9 ? " " + IMLocalized('miles') : " " + IMLocalized('mile')
+                {`${Math.round(distance)}${distance > 1.9 ? " " + IMLocalized('miles') : " " + IMLocalized('mile')
                   } ${IMLocalized('away')}`}
               </Text>
             </View>

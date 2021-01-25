@@ -1,41 +1,60 @@
-import React, { useState } from 'react';
-import { Text, TextInput, View, Alert, Image, TouchableOpacity } from 'react-native';
-import Button from 'react-native-button';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { useDynamicStyleSheet } from 'react-native-dark-mode';
-import dynamicStyles from './styles';
-import TNActivityIndicator from '../../truly-native/TNActivityIndicator';
-import TNProfilePictureSelector from '../../truly-native/TNProfilePictureSelector/TNProfilePictureSelector';
-import { IMLocalized } from '../../localization/IMLocalization';
-import { setUserData } from '../redux/auth';
-import { connect } from 'react-redux';
-import authManager from '../utils/authManager';
-import { localizedErrorMessage } from '../utils/ErrorCode';
+import React, { useState } from "react";
+import {
+  Text,
+  TextInput,
+  View,
+  Alert,
+  Image,
+  TouchableOpacity,
+  styles,
+} from "react-native";
+import Button from "react-native-button";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { useDynamicStyleSheet } from "react-native-dark-mode";
+import dynamicStyles from "./styles";
+import TNActivityIndicator from "../../truly-native/TNActivityIndicator";
+import TNProfilePictureSelector from "../../truly-native/TNProfilePictureSelector/TNProfilePictureSelector";
+import { IMLocalized } from "../../localization/IMLocalization";
+import { setUserData } from "../redux/auth";
+import { connect } from "react-redux";
+import authManager from "../utils/authManager";
+import { localizedErrorMessage } from "../utils/ErrorCode";
 
-const SignupScreen = props => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const SignupScreen = (props) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [profilePictureURL, setProfilePictureURL] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const appConfig = (props.navigation.state.params.appConfig || props.navigation.getParam('appConfig'));
-  const appStyles = (props.navigation.state.params.appStyles || props.navigation.getParam('appStyles'));
+  const appConfig =
+    props.navigation.state.params.appConfig ||
+    props.navigation.getParam("appConfig");
+  const appStyles =
+    props.navigation.state.params.appStyles ||
+    props.navigation.getParam("appStyles");
   const styles = useDynamicStyleSheet(dynamicStyles(appStyles));
+  const userDetails = {
+    firstName,
+    lastName,
+    email,
+    password,
+    photoURI: profilePictureURL,
+    appIdentifier: appConfig.appIdentifier,
+  };
+
+
+  const onOCR = () => {
+    console.log(userDetails);
+    props.navigation.navigate("Verification", {
+      user: userDetails,
+    });
+  }
 
   const onRegister = () => {
     setLoading(true);
-
-    const userDetails = {
-      firstName,
-      lastName,
-      email,
-      password,
-      photoURI: profilePictureURL,
-      appIdentifier: appConfig.appIdentifier
-    };
     authManager
       .createAccountWithEmailAndPassword(userDetails, appConfig.appIdentifier)
       .then(response => {
@@ -57,44 +76,51 @@ const SignupScreen = props => {
       <>
         <TextInput
           style={styles.InputContainer}
-          placeholder={IMLocalized('First Name')}
+          placeholder={IMLocalized("First Name")}
           placeholderTextColor="#aaaaaa"
-          onChangeText={text => setFirstName(text)}
+          onChangeText={(text) => setFirstName(text)}
           value={firstName}
           underlineColorAndroid="transparent"
         />
         <TextInput
           style={styles.InputContainer}
-          placeholder={IMLocalized('Last Name')}
+          placeholder={IMLocalized("Last Name")}
           placeholderTextColor="#aaaaaa"
-          onChangeText={text => setLastName(text)}
+          onChangeText={(text) => setLastName(text)}
           value={lastName}
           underlineColorAndroid="transparent"
         />
         <TextInput
           style={styles.InputContainer}
-          placeholder={IMLocalized('E-mail Address')}
+          placeholder={IMLocalized("E-mail Address")}
           placeholderTextColor="#aaaaaa"
-          onChangeText={text => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           value={email}
           underlineColorAndroid="transparent"
-          autoCapitalize='none'
+          autoCapitalize="none"
         />
         <TextInput
           style={styles.InputContainer}
-          placeholder={IMLocalized('Password')}
+          placeholder={IMLocalized("Password")}
           placeholderTextColor="#aaaaaa"
           secureTextEntry
-          onChangeText={text => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           value={password}
           underlineColorAndroid="transparent"
         />
-        <Button
+        {/* <Button
           containerStyle={styles.signupContainer}
           style={styles.signupText}
           onPress={() => onRegister()}
         >
-          {IMLocalized('Sign Up')}
+          {IMLocalized("Sign Up")}
+        </Button> */}
+        <Button
+          containerStyle={styles.signupContainer}
+          style={styles.signupText}
+          onPress={() => onOCR()}
+        >
+          {IMLocalized("Continue")}
         </Button>
       </>
     );
@@ -102,30 +128,36 @@ const SignupScreen = props => {
 
   return (
     <View style={styles.container}>
-      <KeyboardAwareScrollView style={{ flex: 1, width: '100%' }} keyboardShouldPersistTaps='always'>
+      <KeyboardAwareScrollView
+        style={{ flex: 1, width: "100%" }}
+        keyboardShouldPersistTaps="always"
+      >
         <TouchableOpacity onPress={() => props.navigation.goBack()}>
-          <Image style={appStyles.styleSet.backArrowStyle} source={appStyles.iconSet.backArrow} />
+          <Image
+            style={appStyles.styleSet.backArrowStyle}
+            source={appStyles.iconSet.backArrow}
+          />
         </TouchableOpacity>
-        <Text style={styles.title}>{IMLocalized('Create new account')}</Text>
-        {/* <TNProfilePictureSelector
+        <Text style={styles.title}>{IMLocalized("Create new account")}</Text>
+        <TNProfilePictureSelector
           setProfilePictureURL={setProfilePictureURL}
           appStyles={appStyles}
-        /> */}
+        />
         {renderSignupWithEmail()}
         {appConfig.isSMSAuthEnabled && (
           <>
-            <Text style={styles.orTextStyle}>{IMLocalized('OR')}</Text>
+            <Text style={styles.orTextStyle}>{IMLocalized("OR")}</Text>
             <Button
               containerStyle={styles.PhoneNumberContainer}
               onPress={() =>
-                props.navigation.navigate('Sms', {
+                props.navigation.navigate("Sms", {
                   isSigningUp: true,
                   appStyles,
                   appConfig,
                 })
               }
             >
-              {IMLocalized('Sign up with phone number')}
+              {IMLocalized("Sign up with phone number")}
             </Button>
           </>
         )}
@@ -136,5 +168,5 @@ const SignupScreen = props => {
 };
 
 export default connect(null, {
-  setUserData
+  setUserData,
 })(SignupScreen);

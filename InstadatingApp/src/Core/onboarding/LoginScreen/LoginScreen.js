@@ -89,14 +89,14 @@ const LoginScreen = props => {
         >
           {IMLocalized('Log In')}
         </Button>
-        <Text style={styles.orTextStyle}> {IMLocalized('OR')}</Text>
+        {/* <Text style={styles.orTextStyle}> {IMLocalized('OR')}</Text>
         <Button
           containerStyle={styles.facebookContainer}
           style={styles.facebookText}
           onPress={() => onFBButtonPress()}
         >
           {IMLocalized('Login With Facebook')}
-        </Button>
+        </Button> */}
         {appConfig.isSMSAuthEnabled && (
           <Button
             containerStyle={styles.phoneNumberContainer}

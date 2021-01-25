@@ -6,32 +6,31 @@ const regexForAge = /[0-9]/g;
 
 const DatingConfig = {
     isSMSAuthEnabled: true,
-    appIdentifier: 'rn-dating-android',
+    appIdentifier: 'rn-dating-ios',
     onboardingConfig: {
-        welcomeTitle: IMLocalized('OnlyVax'),
-        welcomeCaption: IMLocalized('The dating app exclusively for COVID-19 vaccine recipients'),
+        welcomeTitle: IMLocalized('Vaxidate'),
+        welcomeCaption: IMLocalized('Match and chat with people you like from your area who you know are safe!'),
         walkthroughScreens: [
             {
-                icon: require("../assets/images/notification.png"),
-                title: "Health is Wealth",
-                description: IMLocalized("Upload a photo of your COVID-19 vaccination. We verify that all our users are vaccinated to begin with.")
-            },
-            {
                 icon: require("../assets/images/fire-icon.png"),
-                title: "Get a Date",
-                description: IMLocalized("Swipe right to get a match with people you like from your area who've been vaccinated.")
-            },
-            {
-                icon: require("../assets/images/chat.png"),
-                title: "Match & Messages",
-                description: IMLocalized("Chat privately with people you match with.")
+                title: "Create a profile",
+                description: IMLocalized("Swipe right to get a match with people you like from your area.")
             },
             {
                 icon: require("../assets/images/instagram.png"),
-                title: "Go on a date",
-                description: IMLocalized("Have fun with your matches by sending photos and videos to each other. Plan a date knowing you won't expose each other and your circle to the virus.")
+                title: "Snap a pic of your Vaccination Report Card",
+                description: IMLocalized("We use optical character recognition to verify your report card. Everyone on the platform will be verfied.")
             },
-            
+            {
+                icon: require("../assets/images/chat.png"),
+                title: "Private Messages",
+                description: IMLocalized("Chat privately with people you match. Send photos, videos and gifs!")
+            },
+            {
+                icon: require("../assets/images/notification.png"),
+                title: "Get Notified",
+                description: IMLocalized("Receive notifications when you get new likes, messages and matches.")
+            }
         ]
     },
     editProfileFields: {
@@ -107,7 +106,7 @@ const DatingConfig = {
                 title: IMLocalized("DISCOVERY"),
                 fields: [
                     {
-                        displayName: IMLocalized("Show Me on Vaccidate"),
+                        displayName: IMLocalized("Show Me on Vaxidate"),
                         type: 'switch',
                         editable: true,
                         key: 'show_me',
@@ -197,11 +196,11 @@ const DatingConfig = {
                         type: 'text',
                         editable: false,
                         key: 'push_notifications_enabled',
-                        value: "142 Steiner Street, San Francisco, CA, 94115",
+                        value: "Silicon Valley, CA",
                     },
                     {
                         displayName: IMLocalized("E-mail us"),
-                        value: 'florian@instamobile.io',
+                        value: 'support@vaxidate.com',
                         type: 'text',
                         editable: false,
                         key: 'email',
@@ -221,7 +220,7 @@ const DatingConfig = {
             }
         ]
     },
-    contactUsPhoneNumber: "+16504859694"
+    contactUsPhoneNumber: "+9198865028"
 };
 
 export default DatingConfig;
