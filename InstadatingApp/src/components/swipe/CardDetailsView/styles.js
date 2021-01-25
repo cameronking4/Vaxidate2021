@@ -11,7 +11,7 @@ const dynamicStyles = new DynamicStyleSheet({
     },
     photoView: {
         width: "100%",
-        height: DEVICE_HEIGHT * 0.5,
+        height: DEVICE_HEIGHT * 0.6,
         backgroundColor: "skyblue"
     },
     profilePhoto: {
@@ -20,7 +20,7 @@ const dynamicStyles = new DynamicStyleSheet({
     },
     backView: {
         position: "absolute",
-        top: DEVICE_HEIGHT * 0.467,
+        top: DEVICE_HEIGHT * 0.567,
         right: 20,
         width: 55,
         height: 55,
@@ -106,10 +106,10 @@ const dynamicStyles = new DynamicStyleSheet({
         justifyContent: "center"
     },
     myphotosItemView: {
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 200,
         marginHorizontal: 8,
-        marginVertical: 8,
+        marginVertical: 2,
         borderRadius: 15,
         justifyContent: "center",
         alignItems: "center",

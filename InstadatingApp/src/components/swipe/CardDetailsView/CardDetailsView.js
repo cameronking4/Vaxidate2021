@@ -19,7 +19,7 @@ import dynamicStyles from './styles';
 import { useDynamicStyleSheet } from 'react-native-dark-mode';
 import { IMLocalized } from "../../../Core/localization/IMLocalization";
 
-const HIT_SLOP = { top: 15, left: 15, right: 15, bottom: 15 };
+const HIT_SLOP = { top: 10, left: 15, right: 15, bottom: 15 };
 
 const CardDetailsView = props => {
   const styles = useDynamicStyleSheet(dynamicStyles);
@@ -35,7 +35,7 @@ const CardDetailsView = props => {
   const [photosUpdated, setPhotosUpdated] = useState(false);
   const [swiperDotWidth, setSwiperDotWidth] = useState(null);
   const [myPhotos] = useState(
-    props.instagramPhotos || [props.profilePictureURL]
+    [props.profilePictureURL] || [props.profilePictureURL]
   );
   const [instagramPhotos, setInstagramPhotos] = useState(
     props.instagramPhotos || []
@@ -105,13 +105,13 @@ const CardDetailsView = props => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={styles.body} bounces={false}>
+      <ScrollView style={styles.body} bounces={true}>
         <View style={styles.photoView}>
           <Swiper
             style={styles.wrapper}
             removeClippedSubviews={false}
             showsButtons={false}
-            loop={false}
+            loop={true}
             paginationStyle={{ top: 5, bottom: null }}
             dot={
               <View
@@ -135,12 +135,12 @@ const CardDetailsView = props => {
                 }}
               />
             }
-          >
-            {myPhotos.map((photos, i) => (
+          > 
+            {myPhotos.map((photo, i) => (
               <FastImage
                 key={"photos" + i}
                 style={styles.profilePhoto}
-                source={{ uri: photos }}
+                source={{ uri: photo }}
               />
             ))}
           </Swiper>
@@ -161,7 +161,7 @@ const CardDetailsView = props => {
         <View style={styles.captionView}>
           <View style={styles.itemView}>
             <Image style={styles.icon} source={AppStyles.iconSet.schoolIcon} />
-            <Text style={styles.text}>UCLA</Text>
+            <Text style={styles.text}>{school}</Text>
           </View>
           {props.distance != undefined && (
             <View style={styles.itemView}>
@@ -186,7 +186,7 @@ const CardDetailsView = props => {
           <View style={styles.instagramView}>
             <View style={styles.itemView}>
               <Text style={[styles.label, { fontWeight: "bold" }]}>
-                {IMLocalized('Recent Instagram Photos')}
+                {IMLocalized('More Photos')}
               </Text>
             </View>
             <Swiper

@@ -8,29 +8,30 @@ const DatingConfig = {
     isSMSAuthEnabled: true,
     appIdentifier: 'rn-dating-android',
     onboardingConfig: {
-        welcomeTitle: IMLocalized('Find your soul mate'),
-        welcomeCaption: IMLocalized('Match and chat with people you like from your area.'),
+        welcomeTitle: IMLocalized('OnlyVax'),
+        welcomeCaption: IMLocalized('The dating app exclusively for COVID-19 vaccine recipients'),
         walkthroughScreens: [
+            {
+                icon: require("../assets/images/notification.png"),
+                title: "Health is Wealth",
+                description: IMLocalized("Upload a photo of your COVID-19 vaccination. We verify that all our users are vaccinated to begin with.")
+            },
             {
                 icon: require("../assets/images/fire-icon.png"),
                 title: "Get a Date",
-                description: IMLocalized("Swipe right to get a match with people you like from your area.")
+                description: IMLocalized("Swipe right to get a match with people you like from your area who've been vaccinated.")
             },
             {
                 icon: require("../assets/images/chat.png"),
-                title: "Private Messages",
-                description: IMLocalized("Chat privately with people you match.")
+                title: "Match & Messages",
+                description: IMLocalized("Chat privately with people you match with.")
             },
             {
                 icon: require("../assets/images/instagram.png"),
-                title: "Send Photos & Videos",
-                description: IMLocalized("Have fun with your matches by sending photos and videos to each other.")
+                title: "Go on a date",
+                description: IMLocalized("Have fun with your matches by sending photos and videos to each other. Plan a date knowing you won't expose each other and your circle to the virus.")
             },
-            {
-                icon: require("../assets/images/notification.png"),
-                title: "Get Notified",
-                description: IMLocalized("Receive notifications when you get new messages and matches.")
-            }
+            
         ]
     },
     editProfileFields: {

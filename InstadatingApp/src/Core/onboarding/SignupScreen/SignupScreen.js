@@ -107,10 +107,10 @@ const SignupScreen = props => {
           <Image style={appStyles.styleSet.backArrowStyle} source={appStyles.iconSet.backArrow} />
         </TouchableOpacity>
         <Text style={styles.title}>{IMLocalized('Create new account')}</Text>
-        <TNProfilePictureSelector
+        {/* <TNProfilePictureSelector
           setProfilePictureURL={setProfilePictureURL}
           appStyles={appStyles}
-        />
+        /> */}
         {renderSignupWithEmail()}
         {appConfig.isSMSAuthEnabled && (
           <>
